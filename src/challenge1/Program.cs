@@ -20,7 +20,7 @@ namespace Challenge1
             // init extent reports
             _extent = new ExtentReports(reportLocation, DisplayOrder.NewestFirst);
             _extent.LoadConfig("extent-config.xml");
-            var test = _extent.StartTest("Test 2", "This is the test 2 of take home assignment");
+            var test = _extent.StartTest("Challenge 1", "This is the challenge 1 test");
             var optionVotes = RunTest(test);
             if (optionVotes != string.Empty)
             {
