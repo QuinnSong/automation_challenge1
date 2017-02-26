@@ -13,7 +13,7 @@ namespace Challenge1
         private static ExtentReports _extent;
         private static readonly IWebDriver Driver = new InternetExplorerDriver();
         private static readonly string reportLocation = @"e:\challenge1_report.html";
-        private static readonly string baseUrl = @"http://slashdot.org/";
+        private static readonly string baseUrl = @"<source website for testing>";
 
         private static void Main()
         {
