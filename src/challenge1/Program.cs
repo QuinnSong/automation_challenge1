@@ -14,9 +14,9 @@ namespace Challenge1
         private static ExtentReports _extent;
         private static ExtentTest _test;
         private static readonly IWebDriver Driver = new InternetExplorerDriver();
-        private static readonly string reportLocation = @"e:\challenge1_report.html";
-        private static readonly string screenshotLocation = @"e:\challenge1_screenshot.png";
-        private static readonly string baseUrl = @"<source website for testing>";
+        private static readonly string reportLocation = @"c\jenkins\challenge1_report.html";
+        private static readonly string screenshotLocation = @"c:\jenkins\challenge1_screenshot.png";
+        private static readonly string baseUrl = @"http://slashdot.org/";
 
         private static void Main()
         {
@@ -63,7 +63,7 @@ namespace Challenge1
             {
 
                 var articles = Driver.FindElements(By.CssSelector(@"span[class='story-title']"));
-                test.Log(LogStatus.Info, "Log articles qty on the page ", articles.Count.ToString());
+                test.Log(LogStatus.Info, "Print articles qty on the page ", articles.Count.ToString());
                 var allIcons = Driver.FindElements(By.CssSelector(@"span[class='topic'] > a >img"));
                 List<string> allTitles =
                     allIcons.ToList().ConvertAll(x => x.GetAttribute("title")).ToList();
@@ -73,20 +73,20 @@ namespace Challenge1
                     select new { value = t.Key, count = t.Count() };
                 foreach (var t in uniqueIcons)
                 {
-                    // Log unique icons and used count 
+                    // Print a list of unique (different) icons used on article titles and how many times was it used 
                     test.Log(LogStatus.Info, "Unique icon title: " + t.value, "Used times: " + t.count.ToString());
                 }
 
                 IWebElement form = Driver.FindElement(By.Id("pollBooth"));
                 IWebElement[] labels = Driver.FindElements(By.CssSelector(@"form#pollBooth>label")).ToArray();
 
-                // pickup a random label
+                // pickup a random option (label)
                 Random rand = new Random();
                 int index = rand.Next(0, labels.Length);
 
                 labels[index].Click();
                 string optionText = labels[index].Text;
-                // Vote a random option
+                // Vote for some random option on the daily poll 
                 form.Submit();
 
                 WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(3));
@@ -100,7 +100,7 @@ namespace Challenge1
                 TakeScreenshot(Driver, screenshotLocation);
                 _test.Log(LogStatus.Info, "Screenshot - " + _test.AddScreenCapture(screenshotLocation)); // add screenshot
 
-                // Return total # people for the same option 
+                // Return the number of people that have voted for that same option 
                 return optionVotes;
             }
             catch (Exception e)
