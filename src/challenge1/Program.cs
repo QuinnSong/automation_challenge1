@@ -14,8 +14,8 @@ namespace Challenge1
         private static ExtentReports _extent;
         private static ExtentTest _test;
         private static readonly IWebDriver Driver = new InternetExplorerDriver();
-        private static readonly string reportLocation = @"c:\jenkins\challenge1_report.html";
-        private static readonly string screenshotLocation = @"c:\jenkins\challenge1_screenshot.png";
+        private static readonly string reportLocation = @"challenge1_report.html";
+        private static readonly string screenshotLocation = @"challenge1_screenshot.png";
         private static readonly string baseUrl = @"http://slashdot.org/";
 
         private static void Main()
