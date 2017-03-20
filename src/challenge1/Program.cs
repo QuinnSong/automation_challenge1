@@ -34,7 +34,7 @@ namespace Challenge1
                 _test.Log(LogStatus.Fail, "people voted for the same option: --");
             }
             _extent.EndTest(_test);
-            _extent.Flush();
+            //_extent.Flush();
             _extent.Close();
             Driver.Quit();
 
