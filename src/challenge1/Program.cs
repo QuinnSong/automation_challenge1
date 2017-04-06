@@ -51,7 +51,7 @@ namespace Challenge1
             else
             {
                 Screenshot screenshot = screenshotDriver.GetScreenshot();
-                screenshot.SaveAsFile(fileName, ImageFormat.Png);
+                screenshot.SaveAsFile(fileName, ScreenshotImageFormat.Png);
             }
             
         }
